@@ -165,7 +165,7 @@ public class Alumno extends Person {
 	
 	public List<Res_formulario> getRes_formulario(){
 		List<Res_formulario> sortedResultados= new ArrayList<>(getRes_formularioInternal());
-		PropertyComparator.sort(sortedResultados, new MutableSortDefinition("test", true, true));
+		PropertyComparator.sort(sortedResultados, new MutableSortDefinition(null, true, true));
 		return Collections.unmodifiableList(sortedResultados);
 	}
 		

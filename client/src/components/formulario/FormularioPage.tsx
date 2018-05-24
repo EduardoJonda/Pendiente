@@ -34,6 +34,20 @@ export default class FormularioPage extends React.Component<IFormularioPageProps
     }
   }
 
+  send2() {
+    event.preventDefault();
+    console.log('procesando excel...');
+    // creacion del elmento temporarl en forma de enlace
+       const tmpElemento = document.createElement('a');
+       // obtener la info desde el div
+       const data_type = 'data:application/vnd.ms-excel;base64';
+       const tabla_div = document.getElementById('tblReporte');
+
+       tmpElemento.href = data_type + ', ' + btoa(tabla_div.outerHTML);
+       tmpElemento.download = 'excelPrueba.xls';
+       tmpElemento.click();
+  }
+
   render() {
 
     const { resultado } = this.state;
@@ -72,8 +86,9 @@ export default class FormularioPage extends React.Component<IFormularioPageProps
             <h2 className='center'>Alumnos que practican {params.dato}</h2>
           ))}
           <br/>
+           <button onClick={() => this.send2()} className='btn btn-default'>Excel<i className='material-icons right'>send</i></button>
           <br/>
-          <table className='highlight'>
+          <table className='highlight' id='tblReporte'>
             <thead>
               <tr>
                 <th>Nombres</th>

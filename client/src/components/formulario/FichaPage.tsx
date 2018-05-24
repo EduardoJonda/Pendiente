@@ -79,9 +79,21 @@ export default class FichaPage extends React.Component<ICorreoRequestEditorProps
       progress: 'progress scale-transition scale-out',
      show: false,
      show2: false,
-     value: '4'
+     value: '4',
+     alumnoId: props.location.state.alumnoId
     };
   }
+
+  componentDidMount() {
+    const { alumnoId } = this.state;
+    if (alumnoId) {
+      const fetchUrl = url(`/api/student/` + alumnoId);
+      fetch(fetchUrl)
+        .then(response => response.json())
+        .then(alumno => this.setState({ alumno }));
+    }
+  }
+
 
 onSubmit(event) {
     event.preventDefault();
@@ -224,9 +236,10 @@ onSubmit(event) {
           asociacion = 'Ninguna';
           console.log('17.No Asociacion');
         }
-
-      const alumnoId = this.props.alumnoId;
-
+const { alumnoId } = this.state;
+const { alumno } = this.state;
+      // const alumnoId = this.props.alumnoId;
+      console.log(alumnoId);
      const resultRequest: IResultadoRequest = {
         lugar_nacimiento: lugarN,
         nombre_contacto: contacto,
@@ -257,7 +270,10 @@ onSubmit(event) {
         });
           } else {
             console.log('ERROR?!...', response);
-          }
+          this.context.router.push({
+          pathname: '/'
+             });
+        }
       });
   }
 
