@@ -63,7 +63,9 @@ export default class EstudiantePage extends React.Component<IAlumnosPageProps, I
       <h4 className='center-align cyan-text text-darken-2'>{alumno.firstName} {alumno.lastName} {alumno.id}</h4>
       <div className='divider'></div>
       <br/>
- <Link to={{ pathname : `/formulario/ficharegistro`, state: { alumnoId: alumno.id }}} className='btn-floating btn-small waves-effect waves-light green'><i className='material-icons'>edit</i>Formulario</Link>
+  <h5 className='text-darken-1'>Formulario</h5><Link to={{ pathname : `/formulario/ficharegistro`, state: { alumnoId: alumno.id }}} className='btn-floating btn-small waves-effect waves-light green'><i className='material-icons'>edit</i></Link>
+      <br/><br/>
+        <div className='divider'></div>
       <br/><br/>
        <div><a href='/'><i className='material-icons'>exit_to_app</i>CERRAR SESIÓN</a></div>
     </div>

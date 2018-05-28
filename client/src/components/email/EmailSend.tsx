@@ -115,7 +115,6 @@ export default class EmailSend extends React.Component<IAlumnoEditorProps, IAlum
           <li><a className='subheader'>Resultados</a></li>
           <li><a href='/alumnos/list' title='Alumnos'><i className='material-icons'>person</i>Alumnos</a></li>
           <li><a href='/formulario/list' title='Formulario'><i className='material-icons'>book</i>Formulario</a></li>
-          <li><a href='/formulario/ficharegistro' title='Ficha'><i className='material-icons'>book</i>Ficha</a></li>
           <li><a href='/grupo/list' title='Grupos'><i className='material-icons'>group</i>Grupos</a></li>
           <li><div className='divider'></div></li>
           <li><a href='/'><i className='material-icons'>exit_to_app</i>CERRAR SESIÓN</a></li>

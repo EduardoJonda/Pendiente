@@ -7,7 +7,9 @@ import SweetAlert from '../../../node_modules/sweetalert-react';
 import '../../../node_modules/sweetalert/dist/sweetalert.css';
 import { Digits, NotEmpty } from '../form/Constraints';
 import Input from '../form/Input';
+import RadioInput from '../form/RadioInput4';
 import * as $ from '../../../node_modules/jquery';
+import '../../../public/css/form-color.css';
 
 import { IInputChangeHandler, IFieldError, IError, ICorreoRequest, IAlumno, IRouterContext } from '../../types';
 
@@ -270,9 +272,7 @@ const { alumno } = this.state;
         });
           } else {
             console.log('ERROR?!...', response);
-          this.context.router.push({
-          pathname: '/'
-             });
+           this.setState({ show2: true });
         }
       });
   }
@@ -280,59 +280,45 @@ const { alumno } = this.state;
   handleOnChange(event) {
     console.log(event.target.value);
     const cList = depArray[event.target.value];
-
     const cSelect = document.getElementById('provincias');
-  // remove the current options from the country select
-  const len = cSelect.options.length;
-  while (cSelect.options.length > 0) {
-    cSelect.remove(0);
-  }
-  let newOption;
-  // create new options
-  for (let i = 0; i < cList.length; i++) {
-    newOption = document.createElement('option');
-    newOption.value = cList[i];  // assumes option string and value are the same
-    newOption.text = cList[i];
-    // add the new option
-    try {
-      cSelect.add(newOption);  // this will fail in DOM browsers but is needed for IE
+    // remove the current options from the country select
+    const len = cSelect.options.length;
+    while (cSelect.options.length > 0) {
+      cSelect.remove(0);
     }
-    catch (e) {
-      cSelect.appendChild(newOption);
+    let newOption;
+    // create new options
+    for (let i = 0; i < cList.length; i++) {
+      newOption = document.createElement('option');
+      newOption.value = cList[i];  // assumes option string and value are the same
+      newOption.text = cList[i];
+      // add the new option
+      try {
+        cSelect.add(newOption);  // this will fail in DOM browsers but is needed for IE
+      }
+      catch (e) {
+        cSelect.appendChild(newOption);
 
+      }
     }
-  }
+
   }
 
-  handleOnChangeDeporte(event) {
+  handleOnClickConvivencia(evt) {
     console.log(event.target.value);
-    const valor = event.target.value;
-    const inp = document.getElementById('deporteotros');
-    if ( valor === 'Otros') {
-      console.log('eliminando disabeld');
-      inp.disabled = false;
-     // inp.removeAttribute('disabled');
-    }else {
-      inp.disabled = true;
-    }
-
-  }
-
-  handleOnClickDeporte(evt) {
     const val = evt.target.value;
-    const fed = document.getElementById('depfederacion');
-    if (val === 'Si') {
-      console.log('eliminando disabeld');
-      fed.disabled = false;
-    // fed.removeAttribute('disabled');
-    }else {
-    fed.disabled = true;
+    const inst = document.getElementById('conviotros');
+    console.log('eliminando disabledd');
+    inst.disabled = false;
+
   }
-  }
-   handleOnClickEnfermedad(evt) {
+
+  handleOnClickEnfermedad(evt) {
+    console.log(event.target.value);
     const val = evt.target.value;
     const enf = document.getElementById('enfermedad');
     const radios = document.getElementsByName('gradoenf');
+
     if (val === 'Si') {
       console.log('eliminando dissbledd');
       enf.disabled = false;
@@ -345,11 +331,14 @@ const { alumno } = this.state;
         radios[n].disabled = true;
       }
     }
+
   }
+
   handleOnChangeEnfermedad(event) {
     console.log(event.target.value);
     const valor = event.target.value;
     const otr = document.getElementById('enfermotros');
+
     if ( valor === 'Otros') {
       console.log('eliminando disableddas');
       otr.disabled = false;
@@ -358,20 +347,26 @@ const { alumno } = this.state;
     }
 
   }
+
   handleOnClickTratamiento(evt) {
+    console.log(event.target.value);
     const val = evt.target.value;
     const trat = document.getElementById('tratamiento');
+
     if (val === 'Si') {
       console.log('eliminando disabledd');
       trat.disabled = false;
     }else {
-    trat.disabled = true;
+      trat.disabled = true;
     }
+
   }
+
   handleOnChangeTratamiento(event) {
     console.log(event.target.value);
     const valor = event.target.value;
     const otr = document.getElementById('tratotros');
+
     if ( valor === 'Otros') {
       console.log('eliminando disableddas');
       otr.disabled = false;
@@ -380,20 +375,55 @@ const { alumno } = this.state;
     }
 
   }
+
+  handleOnChangeDeporte(event) {
+    console.log(event.target.value);
+    const valor = event.target.value;
+    const inp = document.getElementById('deporteotros');
+
+    if ( valor === 'Otros') {
+      console.log('eliminando disabeld');
+      inp.disabled = false;
+     // inp.removeAttribute('disabled');
+    }else {
+      inp.disabled = true;
+    }
+
+  }
+
+  handleOnClickDeporte(evt) {
+    console.log(event.target.value);
+    const val = evt.target.value;
+    const fed = document.getElementById('depfederacion');
+
+    if (val === 'Si') {
+      console.log('eliminando disabeld');
+      fed.disabled = false;
+    }else {
+      fed.disabled = true;
+    }
+
+  }
+
   handleOnClickInstrumento(evt) {
+    console.log(event.target.value);
     const val = evt.target.value;
     const inst = document.getElementById('instmusical');
+
     if (val === 'Si') {
       console.log('eliminando disabledd');
       inst.disabled = false;
     }else {
-    inst.disabled = true;
+      inst.disabled = true;
     }
+
   }
+
   handleOnChangeInstrumento(event) {
     console.log(event.target.value);
     const valor = event.target.value;
     const ot = document.getElementById('instotros');
+
     if ( valor === 'Otros') {
       console.log('instrumento otros');
       ot.disabled = false;
@@ -402,267 +432,408 @@ const { alumno } = this.state;
     }
 
   }
+
   handleOnClickAsociacion(evt) {
+    console.log(event.target.value);
     const val = evt.target.value;
     const asoc = document.getElementById('asociacion');
+
     if (val === 'Si') {
       asoc.disabled = false;
     }else {
-    asoc.disabled = true;
+      asoc.disabled = true;
     }
+
+  }
+
+  test  = () => {
+    this.setState ({
+      progress: 'progress scale-transition scale-in'
+    });
   }
 
   render() {
+    const { formulario, error, defvalue } = this.state;
     return (
       <span>
-       <form onSubmit={this.onSubmit}>
-      <h3>1. Datos Personales</h3>
-      <p>Departamento:</p>
-    <select id='departamentos' className='browser-default' onChange={this.handleOnChange} required>
-      <option value='' selected='selected' disabled>Seleccione un departamento</option>
-      <option value='Amazonas'>Amazonas</option>
-      <option value='Ancash'>Ancash</option>
-      <option value='Apurimac'>Apurimac</option>
-      <option value='Arequipa'>Arequipa</option>
-      <option value='Ayacucho'>Ayacucho</option>
-      <option value='Cajamarca'>Cajamarca</option>
-      <option value='Cusco'>Cuzco</option>
-      <option value='Huancavelica'>Huancavelica</option>
-      <option value='Huanuco'>Huanuco</option>
-      <option value='Ica'>Ica</option>
-      <option value='Junin'>Junin</option>
-      <option value='La Libertad'>La Libertad</option>
-      <option value='Lambayeque'>Lambayeque</option>
-      <option value='Lima'>Lima</option>
-      <option value='Loreto'>Loreto</option>
-      <option value='Madre de Dios'>Madre de Dios</option>
-      <option value='Moquegua'>Moquegua</option>
-      <option value='Pasco'>Pasco</option>
-      <option value='Piura'>Piura</option>
-      <option value='Puno'>Puno</option>
-      <option value='San Martin'>San Martin</option>
-      <option value='Tacna'>Tacna</option>
-      <option value='Tumbes'>Tumbes</option>
-      <option value='Ucayali'>Ucayali</option>
-    </select>
-    <p>Provincia:</p>
- <select id='provincias' className='browser-default' required>
-      <option value='' selected='selected' disabled>Selecciona una provincia</option>
-    </select>
-    <h3>2. Contactos de emergencia</h3>
-    Nombres y apellidos: <input id='ctoNombres' type='text' required/>
-    Parentesco:
-      <br/><input name='par' id='padre' value='Padre' type='radio' defaultChecked/>
-       <label htmlFor='padre'>Padre</label><br></br>
-       <input name='par' id='madre' value='Madre' type='radio'/>
-       <label htmlFor='madre'>Madre</label><br></br>
-        <input name='par' id='apoderado' value='Apoderado' type='radio'/>
-       <label htmlFor='apoderado'>Apoderado</label><br></br>
-      Telefono:
-      <div className='input-field col s6'>
-            <input id='telefono' type='number' data-length='9' required/>
-            <label htmlFor='telefono'>Ingresa un número de celular</label>
+        <div className='row'>
+          <div className='col s12 m8 offset-m2 left'>
+            <div className='intro deep-purple darken-2 z-depth-1'>
+              <div className='row'>
+                <div className='col s12 m10 offset-m1 left'>
+                <h2 className='white-text'>Resolver Formulario</h2>
+                <p className='white-text'>Obligatorios (*)</p>
+                </div>
+              </div>
             </div>
-    <h3>3. Convivencia</h3>
-    <p>Indica con quien vives</p>
-    <input name='conv' id='p1' value='Padres' type='radio' defaultChecked/>
-       <label htmlFor='p1'>Padres</label><br></br>
-      <input name='conv' id='p2' value='Padre' type='radio'/>
-       <label htmlFor='p2'>Padre</label><br></br>
-       <input name='conv' id='p3' value='Madre' type='radio'/>
-       <label htmlFor='p3'>Madre</label><br></br>
-       <input name='conv' id='p4' value='Familiares' type='radio'/>
-       <label htmlFor='p4'>Familiares</label><br></br>
-       <input name='conv' id='p5' value='Solo' type='radio'/>
-       <label htmlFor='p5'>Solo</label><br/>
-       <input name='conv' id='p6' value='Otros' type='radio'/>
-       <label htmlFor='p6'>Otros:</label>
-       <div className='input-field inline'>
-       <input id='otros' type='text' disabled/>
+            <div className='card white'>
+              <div className='card-content grey-text text-darken-3'>
+                  <div className='row'>
+                    <form className='col s12 m10 offset-m1 left' onSubmit={this.onSubmit}>
+                      <div className='row'>
+                        <br/>
+                        <h4 className='deep-purple-text text-darken-2'>1. Datos Personales</h4>
+                        <div className='input-field col s12'>
+                          <strong>Departamento *</strong><br/><br/>
+                        </div>
+                        <select id='departamentos' className='browser-default' onChange={this.handleOnChange} required>
+                          <option value='0' selected='selected' disabled>Seleccione un departamento</option>
+                          <option value='Amazonas'>Amazonas</option>
+                          <option value='Ancash'>Ancash</option>
+                          <option value='Apurimac'>Apurimac</option>
+                          <option value='Arequipa'>Arequipa</option>
+                          <option value='Ayacucho'>Ayacucho</option>
+                          <option value='Cajamarca'>Cajamarca</option>
+                          <option value='Cusco'>Cuzco</option>
+                          <option value='Huancavelica'>Huancavelica</option>
+                          <option value='Huanuco'>Huanuco</option>
+                          <option value='Ica'>Ica</option>
+                          <option value='Junin'>Junin</option>
+                          <option value='La Libertad'>La Libertad</option>
+                          <option value='Lambayeque'>Lambayeque</option>
+                          <option value='Lima'>Lima</option>
+                          <option value='Loreto'>Loreto</option>
+                          <option value='Madre de Dios'>Madre de Dios</option>
+                          <option value='Moquegua'>Moquegua</option>
+                          <option value='Pasco'>Pasco</option>
+                          <option value='Piura'>Piura</option>
+                          <option value='Puno'>Puno</option>
+                          <option value='San Martin'>San Martin</option>
+                          <option value='Tacna'>Tacna</option>
+                          <option value='Tumbes'>Tumbes</option>
+                          <option value='Ucayali'>Ucayali</option>
+                        </select>
+                        <br></br>
+                        <div className='input-field col s12'>
+                          <strong>Provincia *</strong><br/><br/>
+                        </div>
+                        <select id='provincias' className='browser-default' required>
+                          <option value='' selected='selected' disabled>Selecciona una provincia</option>
+                        </select>
+                        <br/>
+                      </div>
+                      <div className='row'>
+                        <br/>
+                        <h4 className='deep-purple-text text-darken-2'>2. Contactos de emergencia</h4>
+                        <div className='input-field col s12'>
+                          <strong className='title'>Nombres y apellidos *</strong>
+                          <input id='ctoNombres' type='text' required/>
+                        </div>
+                        <br></br><br></br>
+                        <div className='input-field col s12'>
+                          <strong className='title'>Parentescos *</strong><br/><br/>
+                        </div>
+                          <input className='with-gap' name='par' id='padre' value='Padre' type='radio' defaultChecked/>
+                          <label htmlFor='padre'>Padre</label><br></br>
+                          <input className='with-gap' name='par' id='madre' value='Madre' type='radio'/>
+                          <label htmlFor='madre'>Madre</label><br></br>
+                          <input className='with-gap' name='par' id='apoderado' value='Apoderado' type='radio'/>
+                          <label htmlFor='apoderado'>Apoderado</label><br></br>
+                        <br></br>
+                        <div className='input-field col s6'>
+                          <strong>Telefono *</strong>
+                          <input id='telefono' type='number' data-length='9' required/>
+                        </div>
+                      </div>
+                      <div className='row'>
+                      <br/>
+                      <h4 className='deep-purple-text text-darken-2'>3. Convivencia</h4>
+                        <div className='input-field col s12'>
+                          <strong className='title'>Indica con quien vives *</strong><br/><br/>
+                        </div>
+                        <input className='with-gap' name='conv' id='p1' value='Padres' type='radio' defaultChecked/>
+                        <label htmlFor='p1'>Padres</label><br></br>
+                        <input className='with-gap' name='conv' id='p2' value='Padre' type='radio'/>
+                        <label htmlFor='p2'>Padre</label><br></br>
+                        <input className='with-gap' name='conv' id='p3' value='Madre' type='radio'/>
+                        <label htmlFor='p3'>Madre</label><br></br>
+                        <input className='with-gap' name='conv' id='p4' value='Familiares' type='radio'/>
+                        <label htmlFor='p4'>Familiares</label><br></br>
+                        <input className='with-gap' name='conv' id='p5' value='Solo' type='radio'/>
+                        <label htmlFor='p5'>Solo</label><br></br>
+                        <input className='with-gap' name='conv' id='p6' value='Otros' type='radio' onClick={this.handleOnClickConvivencia}/>
+                        <label htmlFor='p6'>Otros:</label>
+                        <div className='input-field inline'>
+                          <input id='conviotros' type='text' disabled/>
+                        </div>
+                        <div className='input-field col s12'>
+                          <strong className='title'>Tipo de vivienda actual *</strong><br/><br/>
+                        </div>
+                        <br/><br/>
+                        <input className='with-gap' name='viv' id='casa' value='Casa' type='radio' defaultChecked/>
+                        <label htmlFor='casa'>Casa</label><br></br>
+                        <input className='with-gap' name='viv' id='dep' value='Departamento' type='radio'/>
+                        <label htmlFor='dep'>Departamento</label><br></br>
+                        <input className='with-gap' name='viv' id='pension' value='Pension' type='radio'/>
+                        <label htmlFor='pension'>Pension</label><br></br>
+                        <input className='with-gap' name='viv' id='viv' value='Vivienda' type='radio'/>
+                        <label htmlFor='viv'>Vivienda Familiar</label><br></br>
+                        <br/>
+                      </div>
+                      <div className='row'>
+                        <br/>
+                        <h4 className='deep-purple-text text-darken-2'>4. Salud</h4>
+                          <br/>
+                          <div className='row col s12'>
+                            <div className='col s12'>
+                              <strong className='title grey-text text-darken-3'>¿PADECES DE ALGUNA ENFERMEDAD? *</strong><br/>
+                            </div>
+                            <div className='col s3'>
+                              <input className='with-gap' name='enf' id='sienf' value='Si' type='radio' onClick={this.handleOnClickEnfermedad}/>
+                              <label htmlFor='sienf'>Si</label><br></br>
+                              <input className='with-gap' name='enf' id='noenf' value='No' type='radio' onClick={this.handleOnClickEnfermedad} defaultChecked/>
+                              <label htmlFor='noenf'>No</label>
+                            </div>
+                          </div>
+                          <br/><br/>
+                          <div className='row col s12'>
+                                <div className='col s12'>
+                                  <strong className='title grey-text text-darken-3'>¿Cuál?</strong><br/><br/>
+                                </div>
+                                <div className='col s12'>
+                                  <div className='col s12 m6'>
+                                    <select id='enfermedad' className='browser-default' onChange={this.handleOnChangeEnfermedad} disabled required>
+                                      <option value='' disabled selected>Seleccione la enfermedad</option>
+                                      <option value='Diabetes'>Diabetes</option>
+                                      <option value='Hipertensión'>Hipertensión Arterial</option>
+                                      <option value='Asma'>Asma</option>
+                                      <option value='Epilepsia'>Epilepsia</option>
+                                      <option value='Otros'>Otros</option>
+                                    </select>
+                                  </div>
+                                  <div className='input-field col s12 m6'>
+                                    <input id='enfermotros' type='text' placeholder='' disabled required/>
+                                    <label for='enfermotros'>Ingrese otra enfermedad</label>
+                                  </div>
+                                </div>
+                          </div>
+                            <br/><br/>
+                            <div className='row col s12'>
+                              <div className='col s12'>
+                                <strong className='title grey-text text-darken-3'>Indica el grado de la enfermedad</strong><br/><br/>
+                              </div>
+                              <div className='col s8'>
+                                <input className='with-gap' name='gradoenf' id='cronico' value='Cronico' type='radio' disabled/>
+                                <label htmlFor='cronico'>Crónico</label><br></br>
+                                <input className='with-gap' name='gradoenf' id='perm' value='Permanente' type='radio' disabled/>
+                                <label htmlFor='perm'>Permanente</label><br></br>
+                                <input className='with-gap' name='gradoenf' id='proceso' value='Proceso' type='radio' disabled/>
+                                <label htmlFor='proceso'>En proceso de superación</label><br></br>
+                                <input className='with-gap' name='gradoenf' id='superada' value='Superada' type='radio' disabled/>
+                                <label htmlFor='superada'>Superada</label><br></br>
+                              </div>
+                            </div>
+                            <br/><br/>
+                            <div className='row col s12'>
+                              <div className='col s12'>
+                                <strong className='title grey-text text-darken-3'>SI PADECES DE ALGUNA ALERGIA, INDICA</strong>
+                              </div>
+                              <div className='col s12'>
+                                <select multiple id='selectmultid'>
+                                    <option value='0' disabled>Seleccionar alergias</option>
+                                    <option value='Beta'>BETALACTÁMICOS (Penicilina, Cefalosporinicos)</option>
+                                    <option value='Analgesicos'>ANALGÉSICOS-ANTI-INFLAMATORIOS</option>
+                                    <option value='Otros'>OTRAS</option>
+                                </select>
+                              </div>
+                            </div><br/><br/>
+                            <div className='row col s12'>
+                              <div className='input-field col s10'>
+                                <strong className='title grey-text text-darken-3'>SI TOMAS MEDICAMENTOS, INDICA CUÁL (ES)</strong>
+                                <input id='medicamentos' type='text'/>
+                              </div>
+                            </div><br/><br/>
+                            <div className='row col s12'>
+                              <div className='col s12'>
+                                <strong className='title grey-text text-darken-3'>¿TE ENCUENTRAS SIGUIENDO ALGÚN TRATAMIENTO MÉDICO PERMANENTE? *</strong><br/><br/>
+                              </div>
+                              <div className='col s3'>
+                                <input className='with-gap' name='trat' id='sitrat' value='Si' type='radio' onClick={this.handleOnClickTratamiento}/>
+                                <label htmlFor='sitrat'>Si</label><br></br>
+                                <input className='with-gap'   name='trat' id='notrat' value='No' type='radio' onClick={this.handleOnClickTratamiento} defaultChecked/>
+                                <label htmlFor='notrat'>No</label>
+                              </div>
+                            </div><br/>
+                            <div className='row col s12'>
+                              <div className='input-field'>
+                                <div className='col s12'>
+                                  <strong className='title grey-text text-darken-3'>Especifica:</strong><br/><br/>
+                                </div>
+                                <div className='col s12'>
+                                  <div className='col s12 m6'>
+                                    <select id='tratamiento' className='browser-default' onChange={this.handleOnChangeTratamiento} disabled required>
+                                      <option value='' disabled selected>Seleccione el tratamiento</option>
+                                      <option value='Medico'>Médico Particular</option>
+                                      <option value='Clínica'>Clínica</option>
+                                      <option value='Hospital'>Hospital</option>
+                                      <option value='Essalud'>Essalud</option>
+                                      <option value='Otros'>Otro</option>
+                                    </select>
+                                  </div>
+                                  <div className='input-field col s12 m6'>
+                                    <input id='tratotros' type='text' placeholder='' disabled required/>
+                                    <label for='tratotros'>Ingrese otro tratamiento</label>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          <br/>
+                      </div>
+                      <div className='row'>
+                        <br/>
+                        <h4 className='deep-purple-text text-darken-2'>5. Recreación</h4>
+                          <br/><br/>
+                          <div className='row col s12'>
+                              <div className='col s12'>
+                                <strong className='title grey-text text-darken-3'>SI PRACTICAS ALGUN DEPORTE, INDICAR CUAL ES *</strong><br/><br/>
+                              </div>
+                              <div className='col s12'>
+                                <div className='col s12 m6'>
+                                  <select id='deporteselect' className='browser-default' onChange={this.handleOnChangeDeporte} required>
+                                    <option value='' disabled selected>Seleccione el deporte</option>
+                                    <option value='Fútbol'>Fútbol</option>
+                                    <option value='Voley'>Voley</option>
+                                    <option value='Basquet'>Basquet</option>
+                                    <option value='Natación'>Natación</option>
+                                    <option value='Muaythai'>Muaythai</option>
+                                    <option value='Ninguno'>Ninguno</option>
+                                    <option value='Otros'>Otro</option>
+                                  </select>
+                                </div>
+                                <div className='input-field col s12 m6'>
+                                  <input id='deporteotros' type='text' placeholder='' disabled required/>
+                                  <label for='deporteotros'>Ingrese otro deporte</label>
+                                </div>
+                              </div>
+                          </div>
+                          <br/><br/>
+                          <div className='row col s12'>
+                              <div className='col s12'>
+                                <strong className='title grey-text text-darken-3'>¿Pertenece a alguna federacion deportiva? </strong><br/><br/>
+                              </div>
+                              <div className='col s3'>
+                                <input className='with-gap' name='federacion' id='si' value='Si' type='radio' onClick={this.handleOnClickDeporte}/>
+                                <label htmlFor='si'>Si</label><br></br>
+                                <input className='with-gap' name='federacion' id='no' value='No' type='radio' onClick={this.handleOnClickDeporte} defaultChecked/>
+                                <label htmlFor='no'>No</label><br></br>
+                              </div>
+                          </div>
+                          <br/><br/>
+                          <div className='row col s12'>
+                            <div className='col s12'>
+                              <strong className='title grey-text text-darken-3'>¿Cuál?</strong>
+                            </div>
+                            <div className='col s6'>
+                              <select id='depfederacion' className='browser-default' disabled required>
+                                 <option value='' disabled selected>Seleccione el deporte</option>
+                                 <option value='Fútbol'>Fútbol</option>
+                                 <option value='Voley'>Voley</option>
+                                 <option value='Basquet'>Basquet</option>
+                                 <option value='Natación'>Natación</option>
+                                 <option value='Muaythai'>Muaythai</option>
+                                 <option value='Ninguno'>Ninguno</option>
+                                 <option value='Otros'>Otro</option>
+                               </select>
+                            </div>
+                          </div>
+                          <br/><br/>
+                          <div className='row col s12'>
+                            <div className='input-field col s10'>
+                              <strong className='title grey-text text-darken-3'>¿QUE TE GUSTA HACER EN TUS TIEMPOS LIBRES? *</strong>
+                              <input id='tlibres' type='text' required/>
+                            </div>
+                          </div>
+                          <br/><br/>
+                          <div className='row col s12'>
+                            <div className='col s12'>
+                              <strong className='title grey-text text-darken-3'>¿TOCAS ALGÚN INSTRUMENTO MUSICAL? *</strong><br></br>
+                            </div>
+                            <div className='col s3'>
+                              <input className='with-gap' name='musical' id='msi' value='Si' type='radio' onClick={this.handleOnClickInstrumento}/>
+                              <label htmlFor='msi'>Si</label><br></br>
+                              <input className='with-gap' name='musical' id='mno' value='No' type='radio' onClick={this.handleOnClickInstrumento} defaultChecked/>
+                              <label htmlFor='mno'>No</label><br></br>
+                            </div>
+                          </div>
+                          <br/><br/>
+                          <div className='row col s12'>
+                            <div className='col s12'>
+                              <strong className='title grey-text text-darken-3'>¿Cuál?</strong><br/><br/>
+                            </div>
+                            <div className='col s12 m6'>
+                              <select id='instmusical' className='browser-default' onChange={this.handleOnChangeInstrumento} disabled required>
+                                 <option value='' disabled selected>Seleccione el instrumento</option>
+                                 <option value='Guitarra'>Guitarra</option>
+                                 <option value='Violín'>Violín</option>
+                                 <option value='Piano'>Piano</option>
+                                 <option value='Saxofón'>Saxofón</option>
+                                 <option value='Flauta'>Flauta</option>
+                                 <option value='Otros'>Otro</option>
+                              </select>
+                            </div>
+                            <div className='input-field col s12 m6'>
+                                <input id='instotros' type='text' placeholder='' disabled required/>
+                                <label for='instotros'>Ingrese otro intrumento</label>
+                            </div>
+                          </div>
+                          <br/><br/>
+                          <div className='row col s12'>
+                            <div className='col s12'>
+                              <strong className='title grey-text text-darken-3'>PERTENECES A ALGUNA ASOCIACIÓN, MOVIMIENTO, GRUPO O COMUNIDAD
+                              (académica, artístico, cultural, deportivo, religioso, etc.)? *</strong><br/><br/>
+                            </div>
+                            <div className='col s3'>
+                              <input className='with-gap' name='asoc' id='acsi' value='Si' type='radio' onClick={this.handleOnClickAsociacion}/>
+                              <label htmlFor='acsi'>Si</label><br></br>
+                              <input className='with-gap' name='asoc' id='acno' value='No' type='radio' onClick={this.handleOnClickAsociacion} defaultChecked/>
+                              <label htmlFor='acno'>No</label><br></br>
+                            </div>
+                          </div>
+                          <br/><br/>
+                          <div className='row col s12'>
+                            <div className='input-field col s12'>
+                              <div className='col s12 m2'>
+                                <strong className='title grey-text text-darken-3'>¿Cuál?</strong>
+                              </div>
+                              <div className='col s12 m8'>
+                                <input id='asociacion' type='text' disabled required/>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      <br/>
+                      <div className='right'>
+                        <button className='btn waves-effect waves-deep-purple btn-default deep-purple text-darken-2' type='submit'>Enviar<i className='material-icons right'>send</i></button>
+                      </div>
+                      <br/><br/>
+                      <div className={this.state.progress}>
+                        <div className='indeterminate deep-purple text-darken-2'></div>
+                      </div>
+                    </form>
+                  </div>
+              </div>
+            </div>
+          </div>
+            <SweetAlert
+              show={this.state.show}
+              type='error'
+              title='El teléfono debe ser igual o menor a 9 dígitos'
+              onConfirm={ () => {
+                this.setState({ show: false });
+              }}
+            />
+            <SweetAlert
+              show={this.state.show2}
+              type='success'
+              title='Formulario completado'
+              onConfirm={ () => {
+                this.setState({ show2: false });
+                this.context.router.push({
+                  pathname: '/'
+                });
+              }}
+            />
        </div>
-       <p> Tipo de vivienda actual </p>
-       <input name='viv' id='casa' value='Casa' type='radio' defaultChecked/>
-       <label htmlFor='casa'>Casa</label><br></br>
-      <input name='viv' id='dep' value='Departamento' type='radio'/>
-       <label htmlFor='dep'>Departamento</label><br></br>
-       <input name='viv' id='pension' value='Pension' type='radio'/>
-       <label htmlFor='pension'>Pension</label><br></br>
-       <input name='viv' id='viv' value='Vivienda' type='radio'/>
-       <label htmlFor='viv'>Vivienda Familiar</label><br></br>
-       <h3>4. Salud</h3>
-   <div className='row'>
-        <div className='col s10 m4'>
-          <strong className='title grey-text text-darken-3'>¿PADECES DE ALGUNA ENFERMEDAD?</strong>
-        </div>
-        <div className='col s3'>
-        <input name='enf' id='sienf' value='Si' type='radio' onClick={this.handleOnClickEnfermedad}/>
-        <label htmlFor='sienf'>Si</label><br></br>
-        <input name='enf' id='noenf' value='No' type='radio' onClick={this.handleOnClickEnfermedad} defaultChecked/>
-        <label htmlFor='noenf'>No</label></div>
-        <div className='input-field col s12'>
-            <div className='col s10 m4'>
-           <strong className='title grey-text text-darken-3'>¿CUÁL?</strong></div>
-            <div className='col s3'>
-          <select id='enfermedad' className='browser-default' onChange={this.handleOnChangeEnfermedad} disabled required>
-             <option value='' disabled selected>Seleccione la enfermedad</option>
-             <option value='Diabetes'>Diabetes</option>
-             <option value='Hipertensión'>Hipertensión Arterial</option>
-             <option value='Asma'>Asma</option>
-             <option value='Epilepsia'>Epilepsia</option>
-             <option value='Otros'>Otros</option>
-           </select></div>
-           <div className='col s10 m1'><h5 className='center-aligNamen'>Otros:</h5></div>
-         <div className='col s12 m2'><input id='enfermotros' type='text' disabled required/></div>
-           </div>
-           <div className='col s10 m4'>
-           <strong className='title grey-text text-darken-3'>Indica el grado de la enfermedad</strong></div>
-            <div className='col s3'>
-           <input name='gradoenf' id='cronico' value='Cronico' type='radio' defaultChecked disabled/>
-           <label htmlFor='cronico'>Crónico</label><br></br>
-           <input name='gradoenf' id='perm' value='Permanente' type='radio' disabled/>
-           <label htmlFor='perm'>Permanente</label><br></br>
-           <input name='gradoenf' id='proceso' value='Proceso' type='radio' disabled/>
-           <label htmlFor='proceso'>En proceso de superación</label><br></br>
-           <input name='gradoenf' id='superada' value='Superada' type='radio' disabled/>
-           <label htmlFor='superada'>Superada</label></div>
-           <div className='input-field col s12'>
-           <div className='col s10 m4'>
-          <strong className='title grey-text text-darken-3'>SI PADECES DE ALGUNA ALERGIA, INDICA:</strong>
-          </div>
-          <div className='col s6'>
-          <select multiple id='selectmultid'>
-              <option value='0' disabled>Seleccionar alergias</option>
-              <option value='Beta'>BETALACTÁMICOS (Penicilina, Cefalosporinicos)</option>
-              <option value='Analgesicos'>ANALGÉSICOS-ANTI-INFLAMATORIOS</option>
-              <option value='Otros'>OTRAS</option>
-          </select></div><br></br>
-          </div>
-          <div className='input-field col s12'>
-          <strong className='title grey-text text-darken-3'>SI TOMAS MEDICAMENTOS, INDICA CUÁL (ES):</strong>
-          <input id='medicamentos' type='text'/>
-          </div>
-          <div className='col s10 m4'>
-          <strong className='title grey-text text-darken-3'>¿TE ENCUENTRAS SIGUIENDO ALGÚN TRATAMIENTO MÉDICO PERMANENTE?</strong>
-          </div>
-          <div className='col s3'>
-          <input name='trat' id='sitrat' value='Si' type='radio' onClick={this.handleOnClickTratamiento}/>
-          <label htmlFor='sitrat'>Si</label><br></br>
-          <input name='trat' id='notrat' value='No' type='radio' onClick={this.handleOnClickTratamiento} defaultChecked/>
-          <label htmlFor='notrat'>No</label></div>
-          <div className='input-field col s12'>
-            <div className='col s10 m4'>
-           <strong className='title grey-text text-darken-3'>Especifica:</strong></div>
-            <div className='col s3'>
-          <select id='tratamiento' className='browser-default' onChange={this.handleOnChangeTratamiento} disabled required>
-             <option value='' disabled selected>Seleccione la enfermedad</option>
-             <option value='Medico'>Médico Particular</option>
-             <option value='Clínica'>Clínica</option>
-             <option value='Hospital'>Hospital</option>
-             <option value='Essalud'>Essalud</option>
-             <option value='Otros'>Otros</option>
-           </select></div>
-           <div className='col s10 m1'><h5 className='center-aligNamen'>Otros:</h5></div>
-         <div className='col s12 m2'><input id='tratotros' type='text' disabled required/></div>
-         </div><br/>
-    </div>
-    <h3>5. Recreación</h3>
-      <div className='row'>
-        <div className='input-field col s12'>
-         <div className='col s10 m4'><strong className='title grey-text text-darken-3'>Si practicas algun deporte, indicar cual es:</strong></div>
-         <div className='col s3'>
-         <select id='deporteselect' className='browser-default' onChange={this.handleOnChangeDeporte} required>
-           <option value='' disabled selected>Seleccione el deporte</option>
-           <option value='Fútbol'>Fútbol</option>
-           <option value='Voley'>Voley</option>
-           <option value='Basquet'>Basquet</option>
-           <option value='Natación'>Natación</option>
-           <option value='Muaythai'>Muaythai</option>
-           <option value='Ninguno'>Ninguno</option>
-           <option value='Otros'>Otros</option>
-         </select>
-         </div>
-         <div className='col s10 m1'><h5 className='center-aligNamen'>Otros:</h5></div>
-         <div className='col s12 m2'><input id='deporteotros' type='text' disabled required/></div>
-       </div>
-   <div className='col s10 m4'>
-   <strong className='title grey-text text-darken-3'>¿Pertenece a alguna federacion deportiva?</strong>
-   </div>
-    <div className='col s3'>
-       <input name='federacion' id='si' value='Si' type='radio' onClick={this.handleOnClickDeporte}/>
-       <label htmlFor='si'>Si</label><br></br>
-      <input name='federacion' id='no' value='No' type='radio' onClick={this.handleOnClickDeporte} defaultChecked/>
-       <label htmlFor='no'>No</label><br></br></div>
-    <div className='input-field col s12'>
-    <div className='col s10 m4'>
-   <strong className='title grey-text text-darken-3'>¿CUÁL?</strong></div>
-    <div className='col s3'>
-  <select id='depfederacion' className='browser-default' disabled required>
-     <option value='' disabled selected>Seleccione el deporte</option>
-     <option value='Fútbol'>Fútbol</option>
-     <option value='Voley'>Voley</option>
-     <option value='Basquet'>Basquet</option>
-     <option value='Natación'>Natación</option>
-     <option value='Muaythai'>Muaythai</option>
-     <option value='Ninguno'>Ninguno</option>
-     <option value='Otros'>Otros</option>
-   </select></div></div>
- <div className='input-field col s12'>
-   <strong className='title grey-text text-darken-3'>Que te gusta hacer en tus tiempos libres?</strong>
-   <input id='tlibres' type='text' required/>
-   </div><br></br>
-   <div className='col s10 m4'>
-   <strong className='title grey-text text-darken-3'>¿TOCAS ALGÚN INSTRUMENTO MUSICAL?</strong>
-   </div>
-   <div className='col s3'>
-       <input name='musical' id='msi' value='Si' type='radio' onClick={this.handleOnClickInstrumento}/>
-       <label htmlFor='msi'>Si</label><br></br>
-      <input name='musical' id='mno' value='No' type='radio' onClick={this.handleOnClickInstrumento} defaultChecked/>
-       <label htmlFor='mno'>No</label><br></br></div>
-       <br></br>
-      <div className='input-field col s12'>
-      <div className='col s10 m4'>
-     <strong className='title grey-text text-darken-3'>¿CUÁL?</strong></div>
-      <div className='col s3'>
-    <select id='instmusical' className='browser-default' onChange={this.handleOnChangeInstrumento} disabled required>
-       <option value='' disabled selected>Seleccione el instrumento</option>
-       <option value='Guitarra'>Guitarra</option>
-       <option value='Violín'>Violín</option>
-       <option value='Piano'>Piano</option>
-       <option value='Saxofón'>Saxofón</option>
-       <option value='Flauta'>Flauta</option>
-       <option value='Otros'>Otros</option>
-     </select></div>
-     <div className='col s10 m1'><h5 className='center-aligNamen'>Otros:</h5></div>
-      <div className='col s12 m2'><input id='instotros' type='text' disabled required/></div>
-      </div>
-      <div className='col s10 m4'>
-   <strong className='title grey-text text-darken-3'>PERTENECES A ALGUNA ASOCIACIÓN, MOVIMIENTO, GRUPO O COMUNIDAD
-(académica, artístico, cultural, deportivo, religioso, etc.)?</strong></div>
-        <div className='col s3'>
-       <input name='asoc' id='acsi' value='Si' type='radio' onClick={this.handleOnClickAsociacion}/>
-       <label htmlFor='acsi'>Si</label><br></br>
-      <input name='asoc' id='acno' value='No' type='radio' onClick={this.handleOnClickAsociacion} defaultChecked/>
-       <label htmlFor='acno'>No</label><br></br></div>
-       <div className='input-field col s12'>
-           <div className='col s10 m4'>
-          <strong className='title grey-text text-darken-3'>¿CUÁL?</strong>
-          </div>
-          <div className='col s6'>
-          <input id='asociacion' type='text' disabled required/>
-          </div>
-          </div>
-   </div>
-   <button className='btn waves-effect waves-teal btn-large' type='submit'>Finalizar<i className='material-icons right'>send</i></button>
-  </form>
-        <SweetAlert
-          show={this.state.show}
-          type='success'
-          title='Ficha resuelto satisfactoriamente'
-          onConfirm={ () => {
-            this.setState({ show: false });
-            window.location.reload();
-          }}
-        />
       </span>
     );
   }

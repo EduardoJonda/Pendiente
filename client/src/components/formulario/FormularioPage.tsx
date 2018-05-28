@@ -86,7 +86,6 @@ export default class FormularioPage extends React.Component<IFormularioPageProps
             <h2 className='center'>Alumnos que practican {params.dato}</h2>
           ))}
           <br/>
-           <button onClick={() => this.send2()} className='btn btn-default'>Excel<i className='material-icons right'>send</i></button>
           <br/>
           <table className='highlight' id='tblReporte'>
             <thead>
@@ -104,7 +103,7 @@ export default class FormularioPage extends React.Component<IFormularioPageProps
           <br/>
           <br/>
           <p className='center'>{resultado.length} alumnos encontrados</p>
-          </div>
+          </div><button onClick={() => this.send2()} className='btn btn-default'>Excel<i className='material-icons right'>send</i></button>
         </div>
         </section>
         <br/>
