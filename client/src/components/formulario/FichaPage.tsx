@@ -224,7 +224,7 @@ const { alumno } = this.state;
         alumno: alumnoId
       };
       console.log(resultRequest);
-/*
+
     const url = 'api/fichaalumnoregistro';
         submitForm('POST', url, resultRequest, (status, response) => {
           if (status === 204) {
@@ -237,7 +237,7 @@ const { alumno } = this.state;
            this.setState({ show2: true });
         }
       });
-        */
+
   }
 
   handleOnClickConvivencia(evt) {
