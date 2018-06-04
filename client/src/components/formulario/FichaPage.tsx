@@ -72,6 +72,11 @@ export default class FichaPage extends React.Component<FichaProps, FichaState> {
 onSubmit(event) {
     event.preventDefault();
    const tel_pers = document.getElementById('telefono_personal').value;
+   if ( tel_pers.length === 7 || tel_pers.length === 9) {
+   } else {
+        this.setState({ show: true });
+        return false;
+   }
    console.log('1. Telefono personal:' + tel_pers);
    const contacto = document.getElementById('ctoNombres').value;
    console.log('2. Nombre contacto: ' + contacto);
@@ -84,9 +89,12 @@ onSubmit(event) {
         }
    }
    const tel = document.getElementById('telefono').value;
-   if (tel.match('^[0-9]+$') && tel.length === 9) {
-            console.log('4. Celular Parentesco: ' + tel);
+   if (tel.length === 9 || tel.length === 7) {
+      }else {
+        this.setState({ show: true });
+        return false;
       }
+    console.log('4. Celular Parentesco: ' + tel);
   const ds = document.getElementById('deporteselect');
   let depor = ds.options[ds.selectedIndex].value;
         if ( depor === 'Otros') {
@@ -196,7 +204,6 @@ onSubmit(event) {
       }
       contador++;
     }else if ( i === 4 && contador === 0) {
-       event.preventDefault();
        alert('Debes escoger al menos un apoyo');
        return false;
     }
@@ -383,7 +390,7 @@ de evaluación a los alumnos con el objetivo de velar por su salud física y men
                         <h4 className='deep-purple-text text-darken-2'>1. Datos Personales</h4>
                         <div className='input-field col s6'>
                           <strong>Telefono/Celular *</strong>
-                          <input id='telefono_personal' pattern='.{7}||.{9}' type='number' title='7 o 9 dígitos' required/>
+                          <input id='telefono_personal' type='number' title='7 o 9 dígitos' required/>
                         </div>
                       </div>
                       <div className='row'>
@@ -525,13 +532,7 @@ de evaluación a los alumnos con el objetivo de velar por su salud física y men
                                 <input type='checkbox' name='alergias' value='Beta' id='id1' onClick={this.handleInputChange}/><label htmlFor='id1'>BETALACTÁMICOS (Penicilina, Cefalosporinicos)</label><br></br>
                                 <input type='checkbox' name='alergias' value='Analgesicos' id='id2' onClick={this.handleInputChange}/><label htmlFor='id2'>ANALGÉSICOS-ANTI-INFLAMATORIOS</label><br></br>
                                 <input type='checkbox' name='alergias' value='Otros' id='id3' onClick={this.handleInputChange}/><label htmlFor='id3'>Otros</label><br></br>
-                            {/*
-                              <select multiple id='selectmultid' className='browser-default'>
-                                  <option value='0' disabled>Seleccionar alergias</option>
-                                  <option value='Beta'>BETALACTÁMICOS (Penicilina, Cefalosporinicos)</option>
-                                  <option value='Analgesicos'>ANALGÉSICOS-ANTI-INFLAMATORIOS</option>
-                                  <option value='Otros'>OTRAS</option>
-                              </select> */}</div>
+                           </div>
                               <div className='col s12'>
                               <input id='alergiasotr' type='text' disabled required/>
                               </div>
@@ -630,7 +631,7 @@ de evaluación a los alumnos con el objetivo de velar por su salud física y men
             <SweetAlert
               show={this.state.show}
               type='error'
-              title='El teléfono debe ser igual o menor a 9 dígitos'
+              title='Debe ingresar un número válido de 7 o 9 dígitos'
               onConfirm={ () => {
                 this.setState({ show: false });
               }}
