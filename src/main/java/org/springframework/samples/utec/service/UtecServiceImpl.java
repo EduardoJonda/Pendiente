@@ -49,17 +49,9 @@ public class UtecServiceImpl implements UtecService {
 		// TODO Auto-generated constructor stub
 	}
 
-	/*
-	@Override
-<<<<<<< HEAD
-	public Collection<Alumno> filterResultadoByNacimiento(String dato) throws DataAccessException {
-		return alumnoRepository.filterDataNac(dato);
-	}*/
-=======
 	public Collection<Alumno> filterResultadoByCarrera(String dato) throws DataAccessException {
 		return alumnoRepository.filterDataCar(dato);
 	}
->>>>>>> 018cd251f32ad1a3f43a193cab4e1a22c9625f95
 	
 	@Override
 	public Collection<Alumno> filterResultadoByEnfermedad(String dato) throws DataAccessException {

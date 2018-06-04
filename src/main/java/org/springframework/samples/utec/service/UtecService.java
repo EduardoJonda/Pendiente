@@ -83,14 +83,8 @@ public interface UtecService {
 
 	////guardar formulario
 	void saveResForm(Res_formulario resFormulario);
-	
 
-<<<<<<< HEAD
-//	Collection<Alumno> filterResultadoByNacimiento(String dato) throws DataAccessException;
-
-=======
 	Collection<Alumno> filterResultadoByCarrera(String dato) throws DataAccessException;
->>>>>>> 018cd251f32ad1a3f43a193cab4e1a22c9625f95
 
 	Collection<Alumno> filterResultadoByEnfermedad(String dato) throws DataAccessException;
 

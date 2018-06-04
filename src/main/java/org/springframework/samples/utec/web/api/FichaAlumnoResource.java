@@ -68,15 +68,10 @@ public class FichaAlumnoResource extends AbstractResourceController {
 	@GetMapping("/formulario/{area}/{dato}")
 	public Collection<Alumno> findResultadoFormularioCollection1(@PathVariable("area") String area, @PathVariable("dato") String dato) {
 		
-<<<<<<< HEAD
-		/*if(area.equalsIgnoreCase("lugar_nacimiento")) {
-			return this.utecService.filterResultadoByNacimiento(dato);
-		} else*/ if(area.equalsIgnoreCase("enfermedad")) {
-=======
+
 		if(area.equalsIgnoreCase("carrera")) {
 			return this.utecService.filterResultadoByCarrera(dato);
 		} else if(area.equalsIgnoreCase("enfermedad")) {
->>>>>>> 018cd251f32ad1a3f43a193cab4e1a22c9625f95
 			return this.utecService.filterResultadoByEnfermedad(dato);
 		} else if(area.equalsIgnoreCase("deporte")) {
 			return this.utecService.filterResultadoByDeporte(dato);
@@ -87,8 +82,6 @@ public class FichaAlumnoResource extends AbstractResourceController {
 		}
 		
 	}
-<<<<<<< HEAD
-=======
 	
 	@GetMapping("/formulario/{area}/{dato}/{area2}/{dato2}")
 	public Collection<Alumno> findResultadoFormularioCollection2(@PathVariable("area") String area, @PathVariable("dato") String dato, @PathVariable("area2") String area2, @PathVariable("dato2") String dato2) {
@@ -132,5 +125,4 @@ public class FichaAlumnoResource extends AbstractResourceController {
 		return this.utecService.filterResultadoBy(carrera, enfermedad, deporte, apoyo);
 		
 	}
->>>>>>> 018cd251f32ad1a3f43a193cab4e1a22c9625f95
 }

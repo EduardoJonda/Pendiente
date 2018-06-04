@@ -54,10 +54,7 @@ public class Res_formulario extends BaseEntity {
 
 	@Column(name="apoyos")
 	private String apoyos;
-	
-	@Column(name="apoyos")
-	private String apoyos;
-	
+		
 	@ManyToOne
     @JoinColumn(name = "alumno_idalumno")
     @JsonIgnore
@@ -183,36 +180,14 @@ public class Res_formulario extends BaseEntity {
 		this.alumno = alumno;
 	}
 
-	public String getApoyos() {
-		return apoyos;
-	}
-
-	public void setApoyos(String apoyos) {
-		this.apoyos = apoyos;
-	}
-
 	@Override
 	public String toString() {
 		return "Res_formulario [telefono_personal=" + telefono_personal + ", nombre_contacto=" + nombre_contacto
 				+ ", parentesco_contacto=" + parentesco_contacto + ", telefono_contacto=" + telefono_contacto
-<<<<<<< HEAD
 				+ ", conviviente=" + conviviente + ", enfermedad=" + enfermedad + ", grado_enfermedad="
 				+ grado_enfermedad + ", alergias=" + alergias + ", medicamentos=" + medicamentos + ", tratamiento="
 				+ tratamiento + ", grupo_sanguineo=" + grupo_sanguineo + ", deporte=" + deporte + ", rendimiento="
 				+ rendimiento + ", apoyos=" + apoyos + ", alumno=" + alumno + "]";
 	}
-=======
-				+ ", conviviente=" + conviviente + ", vivienda=" + vivienda + ", enfermedad=" + enfermedad
-				+ ", grado_enfermedad=" + grado_enfermedad + ", alergias=" + alergias + ", medicamentos=" + medicamentos
-				+ ", tratamiento=" + tratamiento + ", deporte=" + deporte + ", federacion_deportiva="
-				+ federacion_deportiva + ", tiempos_libres=" + tiempos_libres + ", instrumento_musical="
-				+ instrumento_musical + ", asociacion=" + asociacion + ", apoyos=" + apoyos + ", alumno=" + alumno
-				+ "]";
-	}
 
-	
-	
-
-	
->>>>>>> 018cd251f32ad1a3f43a193cab4e1a22c9625f95
 }
