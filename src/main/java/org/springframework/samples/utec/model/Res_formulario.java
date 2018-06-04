@@ -61,6 +61,9 @@ public class Res_formulario extends BaseEntity {
 	@Column(name="asociacion")
 	private String asociacion;
 	
+	@Column(name="apoyos")
+	private String apoyos;
+	
 	@ManyToOne
     @JoinColumn(name = "alumno_idalumno")
     @JsonIgnore
@@ -202,6 +205,14 @@ public class Res_formulario extends BaseEntity {
 		this.alumno = alumno;
 	}
 
+	public String getApoyos() {
+		return apoyos;
+	}
+
+	public void setApoyos(String apoyos) {
+		this.apoyos = apoyos;
+	}
+
 	@Override
 	public String toString() {
 		return "Res_formulario [lugar_nacimiento=" + lugar_nacimiento + ", nombre_contacto=" + nombre_contacto
@@ -210,7 +221,12 @@ public class Res_formulario extends BaseEntity {
 				+ ", grado_enfermedad=" + grado_enfermedad + ", alergias=" + alergias + ", medicamentos=" + medicamentos
 				+ ", tratamiento=" + tratamiento + ", deporte=" + deporte + ", federacion_deportiva="
 				+ federacion_deportiva + ", tiempos_libres=" + tiempos_libres + ", instrumento_musical="
-				+ instrumento_musical + ", asociacion=" + asociacion + ", alumno=" + alumno + "]";
+				+ instrumento_musical + ", asociacion=" + asociacion + ", apoyos=" + apoyos + ", alumno=" + alumno
+				+ "]";
 	}
+
+	
+	
+
 	
 }

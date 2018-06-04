@@ -39,9 +39,9 @@ public class FichaAlumnoResource extends AbstractResourceController {
 		
 	    saveResF(res, resFormulario);
 		
-		
 		return resFormulario;
 	}
+
 	
 	private void saveResF(Res_formulario res, RequestResFormulario resFormulario) {
 		
@@ -68,18 +68,62 @@ public class FichaAlumnoResource extends AbstractResourceController {
 	}
 
 	@GetMapping("/formulario/{area}/{dato}")
-	public Collection<Alumno> findResultadoFormularioCollection(@PathVariable("area") String area, @PathVariable("dato") String dato) {
+	public Collection<Alumno> findResultadoFormularioCollection1(@PathVariable("area") String area, @PathVariable("dato") String dato) {
 		
-		if(area.equalsIgnoreCase("lugar_nacimiento")) {
-			return this.utecService.filterResultadoByNacimiento(dato);
+		if(area.equalsIgnoreCase("carrera")) {
+			return this.utecService.filterResultadoByCarrera(dato);
 		} else if(area.equalsIgnoreCase("enfermedad")) {
 			return this.utecService.filterResultadoByEnfermedad(dato);
 		} else if(area.equalsIgnoreCase("deporte")) {
 			return this.utecService.filterResultadoByDeporte(dato);
+		} else if(area.equalsIgnoreCase("apoyo")) {
+			return this.utecService.filterResultadoByApoyo(dato);
 		} else {
 			return null;
 		}
 		
 	}
 	
+	@GetMapping("/formulario/{area}/{dato}/{area2}/{dato2}")
+	public Collection<Alumno> findResultadoFormularioCollection2(@PathVariable("area") String area, @PathVariable("dato") String dato, @PathVariable("area2") String area2, @PathVariable("dato2") String dato2) {
+		
+		if (area.equalsIgnoreCase("carrera") && area2.equalsIgnoreCase("enfermedad")) {
+			return this.utecService.filterResultadoByCarEnf(dato, dato2);
+		} else if (area.equalsIgnoreCase("carrera") && area2.equalsIgnoreCase("deporte")) {
+			return this.utecService.filterResultadoByCarDep(dato, dato2);
+		} else if (area.equalsIgnoreCase("carrera") && area2.equalsIgnoreCase("apoyo")) {
+			return this.utecService.filterResultadoByCarApo(dato, dato2);
+		} else if (area.equalsIgnoreCase("enfermedad") && area2.equalsIgnoreCase("deporte")) {
+			return this.utecService.filterResultadoByEnfDep(dato, dato2);
+		} else if (area.equalsIgnoreCase("enfermedad") && area2.equalsIgnoreCase("apoyo")) {
+			return this.utecService.filterResultadoByEnfApo(dato, dato2);
+		} else if (area.equalsIgnoreCase("deporte") && area2.equalsIgnoreCase("apoyo")) {
+			return this.utecService.filterResultadoByDepApo(dato, dato2);
+		}
+		return null;
+
+	}
+	
+	@GetMapping("/formulario/{area}/{dato}/{area2}/{dato2}/{area3}/{dato3}")
+	public Collection<Alumno> findResultadoFormularioCollection3(@PathVariable("area") String area, @PathVariable("dato") String dato, @PathVariable("area2") String area2, @PathVariable("dato2") String dato2, @PathVariable("area3") String area3, @PathVariable("dato3") String dato3) {
+		
+		if (area.equalsIgnoreCase("carrera") && area2.equalsIgnoreCase("enfermedad") && area3.equalsIgnoreCase("deporte")) {
+			return this.utecService.filterResultadoByCED(dato, dato2, dato3);
+		} else if (area.equalsIgnoreCase("carrera") && area2.equalsIgnoreCase("enfermedad") && area3.equalsIgnoreCase("apoyo")) {
+			return this.utecService.filterResultadoByCEA(dato, dato2, dato3);
+		} else if (area.equalsIgnoreCase("carrera") && area2.equalsIgnoreCase("deporte") && area3.equalsIgnoreCase("apoyo")) {
+			return this.utecService.filterResultadoByCDA(dato, dato2, dato3);
+		} else if (area.equalsIgnoreCase("enfermedad") && area2.equalsIgnoreCase("deporte") && area3.equalsIgnoreCase("apoyo")) {
+			return this.utecService.filterResultadoByEDA(dato, dato2, dato3);
+		} 
+		return null;
+
+	}
+	
+	@GetMapping("/formulario/datos/{carrera}/{enfermedad}/{deporte}/{apoyo}")
+	public Collection<Alumno> findResultadoFormularioCollectionAll(@PathVariable("carrera") String carrera, @PathVariable("enfermedad") String enfermedad, @PathVariable("deporte") String deporte, @PathVariable("apoyo") String apoyo) {
+		
+		return this.utecService.filterResultadoBy(carrera, enfermedad, deporte, apoyo);
+		
+	}
 }

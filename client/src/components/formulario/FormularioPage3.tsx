@@ -6,7 +6,7 @@ import { url, submitForm } from '../../util';
 
 
 interface IFormularioPageProps {
-  params?: { area?: string , dato?: string};
+  params?: { area?: string , dato?: string, area2?: string , dato2?: string, area3?: string , dato3?: string};
 }
 
 interface IFormularioPageState {
@@ -14,7 +14,7 @@ interface IFormularioPageState {
 }
 
 
-export default class FormularioPage extends React.Component<IFormularioPageProps, IFormularioPageState> {
+export default class FormularioPage3 extends React.Component<IFormularioPageProps, IFormularioPageState> {
   context: IRouterContext;
 
   constructor(props) {
@@ -27,7 +27,7 @@ export default class FormularioPage extends React.Component<IFormularioPageProps
     const { params } = this.props;
 
     if (params && params.area) {
-      const fetchUrl = url(`api/formulario/${params.area}/${params.dato}`);
+      const fetchUrl = url(`api/formulario/${params.area}/${params.dato}/${params.area2}/${params.dato2}/${params.area3}/${params.dato3}`);
       fetch(fetchUrl)
         .then(response => response.json())
         .then(resultado => { console.log('resultado', resultado); this.setState({ resultado }); });
@@ -78,8 +78,8 @@ export default class FormularioPage extends React.Component<IFormularioPageProps
           <div><a onClick={browserHistory.goBack} className='btn-floating btn-small waves-effect waves-light blue'><i className='material-icons'>arrow_back</i></a></div>
           <br/>
           <div className='col s11 container'>
-          { params.area === 'carrera' ? (
-            <h2 className='center'>Alumnos de la carrera {params.dato}</h2>
+          { params.area === 'lugar_nacimiento' ? (
+            <h2 className='center'>Alumnos que nacieron en {params.dato}</h2>
             ) : ( params.area === 'enfermedad' ? (
             <h2 className='center'>Alumnos que tienen {params.dato}</h2>
             ) : (

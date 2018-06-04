@@ -7,6 +7,9 @@ import WelcomePage from './components/WelcomePage';
 import ErrorPage from './components/ErrorPage';
 import FichaPage from './components/formulario/FichaPage';
 import FormularioPage from './components/formulario/FormularioPage';
+import FormularioPage2 from './components/formulario/FormularioPage2';
+import FormularioPage3 from './components/formulario/FormularioPage3';
+import FormularioPageAll from './components/formulario/FormularioPageAll';
 import FiltrarFormularioPage from './components/formulario/FiltrarFormularioPage';
 import FindAlumnosPage from './components/alumnos/FindAlumnosPage';
 import AlumnosPage from './components/alumnos/AlumnosPage';
@@ -54,6 +57,9 @@ export default () => (
     <Route path='/alumnos/:alumnoId/resultados/:resultadoId/print' component={ResultadoPrint} />
     <Route path='/formulario/list' component={FiltrarFormularioPage} />
     <Route path='/formulario/:area/:dato' component={FormularioPage} />
+    <Route path='/formulario/:area/:dato/:area2/:dato2' component={FormularioPage2} />
+    <Route path='/formulario/:area/:dato/:area2/:dato2/:area3/:dato3' component={FormularioPage3} />
+    <Route path='/formulario/datos/:carrera/:enfermedad/:deporte/:apoyo' component={FormularioPageAll} />
     <Route path='/formulario/ficharegistro' component={FichaPage} />
     <Route path='/grupos' component={GruposPage} />
     <Route path='/grupos/nuevo' component={NuevoGrupoPage} />
