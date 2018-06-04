@@ -14,8 +14,8 @@ import org.springframework.samples.utec.model.Alumno;
 
 public interface AlumnoRepository extends Repository<Alumno, Integer>{
 	
-	@Query("SELECT DISTINCT alumno FROM Alumno alumno left join alumno.res_formulario resultado WHERE resultado.lugar_nacimiento LIKE :dato%")
-	Collection<Alumno> filterDataNac(@Param("dato") String dato);
+	// @Query("SELECT DISTINCT alumno FROM Alumno alumno left join alumno.res_formulario resultado WHERE resultado.lugar_nacimiento LIKE :dato%")
+	// Collection<Alumno> filterDataNac(@Param("dato") String dato);
 	
 	@Query("SELECT DISTINCT alumno FROM Alumno alumno left join alumno.res_formulario resultado WHERE resultado.enfermedad LIKE :dato%")
 	Collection<Alumno> filterDataEnf(@Param("dato") String dato);

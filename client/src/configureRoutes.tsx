@@ -31,6 +31,7 @@ import LoginAdmiPage from './components/user/LoginAdmiPage';
 import LoginTutoPage from './components/user/LoginTutoPage';
 import LoginAlumnoPage from './components/user/LoginAlumnoPage';
 import EstudiantePage from './components/alumnos/EstudiantePage';
+import AlumnoResFormPage from './components/formulario/AlumnoResFormPage';
 import GrupoPage from './components/grupos/GrupoPage';
 /** Administrador*/
 import AgregarPsicologosPage from './components/admin/AgregarPsicologosPage';
@@ -55,6 +56,7 @@ export default () => (
     <Route path='/formulario/list' component={FiltrarFormularioPage} />
     <Route path='/formulario/:area/:dato' component={FormularioPage} />
     <Route path='/formulario/ficharegistro' component={FichaPage} />
+    <Route path='/alumnos/:alumnoId/res-form' component={AlumnoResFormPage} />
     <Route path='/grupos' component={GruposPage} />
     <Route path='/grupos/nuevo' component={NuevoGrupoPage} />
     <Route path='/grupos/:grupoId' component={DetalleGrupoPage} />

@@ -13,8 +13,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "res_formulario")
 public class Res_formulario extends BaseEntity {
 	
-	@Column(name="lugar_nacimiento")
-	private String lugar_nacimiento;
+	@Column(name="telefono_personal")
+	private int telefono_personal;
 	
 	@Column(name="nombre_contacto")
 	private String nombre_contacto;
@@ -27,10 +27,7 @@ public class Res_formulario extends BaseEntity {
 	
 	@Column(name="conviviente")
 	private String conviviente;
-	
-	@Column(name="vivienda")
-	private String vivienda;
-	
+		
 	@Column(name="enfermedad")
 	private String enfermedad;
 
@@ -45,33 +42,30 @@ public class Res_formulario extends BaseEntity {
 	
 	@Column(name="tratamiento")
 	private String tratamiento;
+	
+	@Column(name="grupo_sanguineo")
+	private String grupo_sanguineo;
 
 	@Column(name="deporte")
 	private String deporte;
-	
-	@Column(name="federacion_deportiva")
-	private String federacion_deportiva;
-	
-	@Column(name="tiempos_libres")
-	private String tiempos_libres;
-	
-	@Column(name="instrumento_musical")
-	private String instrumento_musical;
+		
+	@Column(name="rendimiento")
+	private String rendimiento;
 
-	@Column(name="asociacion")
-	private String asociacion;
+	@Column(name="apoyos")
+	private String apoyos;
 	
 	@ManyToOne
     @JoinColumn(name = "alumno_idalumno")
     @JsonIgnore
     private Alumno alumno;
 
-	public String getLugar_nacimiento() {
-		return lugar_nacimiento;
+	public int getTelefono_personal() {
+		return telefono_personal;
 	}
 
-	public void setLugar_nacimiento(String lugar_nacimiento) {
-		this.lugar_nacimiento = lugar_nacimiento;
+	public void setTelefono_personal(int telefono_personal) {
+		this.telefono_personal = telefono_personal;
 	}
 
 	public String getNombre_contacto() {
@@ -104,14 +98,6 @@ public class Res_formulario extends BaseEntity {
 
 	public void setConviviente(String conviviente) {
 		this.conviviente = conviviente;
-	}
-
-	public String getVivienda() {
-		return vivienda;
-	}
-
-	public void setVivienda(String vivienda) {
-		this.vivienda = vivienda;
 	}
 
 	public String getEnfermedad() {
@@ -154,6 +140,14 @@ public class Res_formulario extends BaseEntity {
 		this.tratamiento = tratamiento;
 	}
 
+	public String getGrupo_sanguineo() {
+		return grupo_sanguineo;
+	}
+
+	public void setGrupo_sanguineo(String grupo_sanguineo) {
+		this.grupo_sanguineo = grupo_sanguineo;
+	}
+
 	public String getDeporte() {
 		return deporte;
 	}
@@ -162,55 +156,37 @@ public class Res_formulario extends BaseEntity {
 		this.deporte = deporte;
 	}
 
-	public String getFederacion_deportiva() {
-		return federacion_deportiva;
+	public String getRendimiento() {
+		return rendimiento;
 	}
 
-	public void setFederacion_deportiva(String federacion_deportiva) {
-		this.federacion_deportiva = federacion_deportiva;
+	public void setRendimiento(String rendimiento) {
+		this.rendimiento = rendimiento;
 	}
 
-	public String getTiempos_libres() {
-		return tiempos_libres;
+	public String getApoyos() {
+		return apoyos;
 	}
 
-	public void setTiempos_libres(String tiempos_libres) {
-		this.tiempos_libres = tiempos_libres;
+	public void setApoyos(String apoyos) {
+		this.apoyos = apoyos;
 	}
 
-	public String getInstrumento_musical() {
-		return instrumento_musical;
-	}
-
-	public void setInstrumento_musical(String instrumento_musical) {
-		this.instrumento_musical = instrumento_musical;
-	}
-
-	public String getAsociacion() {
-		return asociacion;
-	}
-
-	public void setAsociacion(String asociacion) {
-		this.asociacion = asociacion;
-	}
-	
 	public Alumno getAlumno() {
-		return this.alumno;
+		return alumno;
 	}
 
-	protected void setAlumno(Alumno alumno) {
+	public void setAlumno(Alumno alumno) {
 		this.alumno = alumno;
 	}
 
 	@Override
 	public String toString() {
-		return "Res_formulario [lugar_nacimiento=" + lugar_nacimiento + ", nombre_contacto=" + nombre_contacto
+		return "Res_formulario [telefono_personal=" + telefono_personal + ", nombre_contacto=" + nombre_contacto
 				+ ", parentesco_contacto=" + parentesco_contacto + ", telefono_contacto=" + telefono_contacto
-				+ ", conviviente=" + conviviente + ", vivienda=" + vivienda + ", enfermedad=" + enfermedad
-				+ ", grado_enfermedad=" + grado_enfermedad + ", alergias=" + alergias + ", medicamentos=" + medicamentos
-				+ ", tratamiento=" + tratamiento + ", deporte=" + deporte + ", federacion_deportiva="
-				+ federacion_deportiva + ", tiempos_libres=" + tiempos_libres + ", instrumento_musical="
-				+ instrumento_musical + ", asociacion=" + asociacion + ", alumno=" + alumno + "]";
+				+ ", conviviente=" + conviviente + ", enfermedad=" + enfermedad + ", grado_enfermedad="
+				+ grado_enfermedad + ", alergias=" + alergias + ", medicamentos=" + medicamentos + ", tratamiento="
+				+ tratamiento + ", grupo_sanguineo=" + grupo_sanguineo + ", deporte=" + deporte + ", rendimiento="
+				+ rendimiento + ", apoyos=" + apoyos + ", alumno=" + alumno + "]";
 	}
-	
 }

@@ -46,33 +46,31 @@ public class FichaAlumnoResource extends AbstractResourceController {
 	private void saveResF(Res_formulario res, RequestResFormulario resFormulario) {
 		
 		res.setAlergias(resFormulario.getAlergias());
-		res.setAsociacion(resFormulario.getAsociacion());
-		res.setConviviente(resFormulario.getConviviente());
+		res.setApoyos(resFormulario.getApoyos());
 		res.setDeporte(resFormulario.getDeporte());
 		res.setEnfermedad(resFormulario.getEnfermedad());
-		res.setFederacion_deportiva(resFormulario.getFederacion_deportiva());
 		res.setGrado_enfermedad(resFormulario.getGrado_enfermedad());
 		res.setId(resFormulario.getId());
-		res.setInstrumento_musical(resFormulario.getInstrumento_musical());
-		res.setLugar_nacimiento(resFormulario.getLugar_nacimiento());
 		res.setMedicamentos(resFormulario.getMedicamentos());
 		res.setNombre_contacto(resFormulario.getNombre_contacto());
 		res.setParentesco_contacto(resFormulario.getParentesco_contacto());
 		res.setTelefono_contacto(resFormulario.getTelefono_contacto());
-		res.setTiempos_libres(resFormulario.getTiempos_libres());
 		res.setTratamiento(resFormulario.getTratamiento());
-		res.setVivienda(resFormulario.getVivienda());
+		res.setRendimiento(resFormulario.getRendimiento());
+		res.setGrupo_sanguineo(resFormulario.getGrupo_sanguineo());
+		res.setConviviente(resFormulario.getConviviente());
+		res.setTelefono_personal(resFormulario.getTelefono_personal());
 		
 		utecService.saveResForm(res);		
 		
 	}
-
+	
 	@GetMapping("/formulario/{area}/{dato}")
 	public Collection<Alumno> findResultadoFormularioCollection(@PathVariable("area") String area, @PathVariable("dato") String dato) {
 		
-		if(area.equalsIgnoreCase("lugar_nacimiento")) {
+		/*if(area.equalsIgnoreCase("lugar_nacimiento")) {
 			return this.utecService.filterResultadoByNacimiento(dato);
-		} else if(area.equalsIgnoreCase("enfermedad")) {
+		} else*/ if(area.equalsIgnoreCase("enfermedad")) {
 			return this.utecService.filterResultadoByEnfermedad(dato);
 		} else if(area.equalsIgnoreCase("deporte")) {
 			return this.utecService.filterResultadoByDeporte(dato);
@@ -81,5 +79,4 @@ public class FichaAlumnoResource extends AbstractResourceController {
 		}
 		
 	}
-	
 }

@@ -116,7 +116,7 @@ export default class FormularioPage extends React.Component<IFormularioPageProps
 const renderRow = (alumno: IAlumno) => (
   <tr key={alumno.id}>
     <td>
-      <a href={`/alumnos/${alumno.id}`}>
+      <a href={`/alumnos/${alumno.id}/res-form`}>
         {alumno.lastName} {alumno.firstName}
       </a>
     </td>

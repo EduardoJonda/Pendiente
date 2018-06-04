@@ -82,7 +82,7 @@ public interface UtecService {
 	void deleteUser(int id);
 
 
-	Collection<Alumno> filterResultadoByNacimiento(String dato) throws DataAccessException;
+//	Collection<Alumno> filterResultadoByNacimiento(String dato) throws DataAccessException;
 
 
 	Collection<Alumno> filterResultadoByEnfermedad(String dato) throws DataAccessException;

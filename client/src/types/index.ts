@@ -103,6 +103,25 @@ export interface IAlumno extends IPerson {
   genero: string;
   ciclo: string;
   resultados: IResultado[];
+  resformularios: IResFormulario[];
+};
+
+export interface IResFormulario {
+   telefono_personal: number;
+   nombre_contacto: string;
+   parentesco_contacto: string;
+   telefono_contacto: number;
+   deporte: string;
+   conviviente: string;
+   enfermedad: string;
+   grado_enfermedad: string;
+   alergias: string;
+   medicamentos: string;
+   grupo_sanguineo: string;
+   tratamiento: string;
+   rendimiento: string;
+   apoyos: string;
+   alumno: string;
 };
 
 export interface IResultado extends IBaseEntity {

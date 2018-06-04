@@ -5,7 +5,7 @@ public class RequestResFormulario {
 
 	private Integer id;
 	
-	private String lugar_nacimiento;
+	private int telefono_personal;
 
 	private String nombre_contacto;
 
@@ -15,8 +15,6 @@ public class RequestResFormulario {
 
 	private String conviviente;
 
-	private String vivienda;
-
 	private String enfermedad;
 
 	private String grado_enfermedad;
@@ -24,27 +22,49 @@ public class RequestResFormulario {
 	private String alergias;
 
 	private String medicamentos;
+	
+	private String grupo_sanguineo;
 
 	private String tratamiento;
+	
+	private String rendimiento;
+	
+	private String apoyos;
 
 	private String deporte;
 	
-	private String federacion_deportiva;
-	
-	private String tiempos_libres;
-	
-	private String instrumento_musical;
-
-	private String asociacion;
-	
 	private Integer alumno;
-
-	public String getLugar_nacimiento() {
-		return lugar_nacimiento;
+	
+	public int getTelefono_personal() {
+		return telefono_personal;
 	}
 
-	public void setLugar_nacimiento(String lugar_nacimiento) {
-		this.lugar_nacimiento = lugar_nacimiento;
+	public void setTelefono_personal(int telefono_personal) {
+		this.telefono_personal = telefono_personal;
+	}
+
+	public String getGrupo_sanguineo() {
+		return grupo_sanguineo;
+	}
+
+	public void setGrupo_sanguineo(String grupo_sanguineo) {
+		this.grupo_sanguineo = grupo_sanguineo;
+	}
+
+	public String getRendimiento() {
+		return rendimiento;
+	}
+
+	public void setRendimiento(String rendimiento) {
+		this.rendimiento = rendimiento;
+	}
+
+	public String getApoyos() {
+		return apoyos;
+	}
+
+	public void setApoyos(String apoyos) {
+		this.apoyos = apoyos;
 	}
 
 	public String getNombre_contacto() {
@@ -77,14 +97,6 @@ public class RequestResFormulario {
 
 	public void setConviviente(String conviviente) {
 		this.conviviente = conviviente;
-	}
-
-	public String getVivienda() {
-		return vivienda;
-	}
-
-	public void setVivienda(String vivienda) {
-		this.vivienda = vivienda;
 	}
 
 	public String getEnfermedad() {
@@ -135,38 +147,6 @@ public class RequestResFormulario {
 		this.deporte = deporte;
 	}
 
-	public String getFederacion_deportiva() {
-		return federacion_deportiva;
-	}
-
-	public void setFederacion_deportiva(String federacion_deportiva) {
-		this.federacion_deportiva = federacion_deportiva;
-	}
-
-	public String getTiempos_libres() {
-		return tiempos_libres;
-	}
-
-	public void setTiempos_libres(String tiempos_libres) {
-		this.tiempos_libres = tiempos_libres;
-	}
-
-	public String getInstrumento_musical() {
-		return instrumento_musical;
-	}
-
-	public void setInstrumento_musical(String instrumento_musical) {
-		this.instrumento_musical = instrumento_musical;
-	}
-
-	public String getAsociacion() {
-		return asociacion;
-	}
-
-	public void setAsociacion(String asociacion) {
-		this.asociacion = asociacion;
-	}
-
 	public Integer getAlumno() {
 		return alumno;
 	}
@@ -185,14 +165,12 @@ public class RequestResFormulario {
 
 	@Override
 	public String toString() {
-		return "RequestResFormulario [id=" + id + ", lugar_nacimiento=" + lugar_nacimiento + ", nombre_contacto="
+		return "RequestResFormulario [id=" + id + ", telefono_personal=" + telefono_personal + ", nombre_contacto="
 				+ nombre_contacto + ", parentesco_contacto=" + parentesco_contacto + ", telefono_contacto="
-				+ telefono_contacto + ", conviviente=" + conviviente + ", vivienda=" + vivienda + ", enfermedad="
-				+ enfermedad + ", grado_enfermedad=" + grado_enfermedad + ", alergias=" + alergias + ", medicamentos="
-				+ medicamentos + ", tratamiento=" + tratamiento + ", deporte=" + deporte + ", federacion_deportiva="
-				+ federacion_deportiva + ", tiempos_libres=" + tiempos_libres + ", instrumento_musical="
-				+ instrumento_musical + ", asociacion=" + asociacion + ", alumno=" + alumno + "]";
+				+ telefono_contacto + ", conviviente=" + conviviente + ", enfermedad=" + enfermedad
+				+ ", grado_enfermedad=" + grado_enfermedad + ", alergias=" + alergias + ", medicamentos=" + medicamentos
+				+ ", grupo_sanguineo=" + grupo_sanguineo + ", tratamiento=" + tratamiento + ", rendimiento="
+				+ rendimiento + ", apoyos=" + apoyos + ", deporte=" + deporte + ", alumno=" + alumno + "]";
 	}
-	
 	
 }
