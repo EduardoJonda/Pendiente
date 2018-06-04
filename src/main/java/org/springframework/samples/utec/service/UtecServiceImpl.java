@@ -51,8 +51,8 @@ public class UtecServiceImpl implements UtecService {
 
 	
 	@Override
-	public Collection<Alumno> filterResultadoByNacimiento(String dato) throws DataAccessException {
-		return alumnoRepository.filterDataNac(dato);
+	public Collection<Alumno> filterResultadoByCarrera(String dato) throws DataAccessException {
+		return alumnoRepository.filterDataCar(dato);
 	}
 	
 	@Override
@@ -63,6 +63,68 @@ public class UtecServiceImpl implements UtecService {
 	@Override
 	public Collection<Alumno> filterResultadoByDeporte(String dato) throws DataAccessException {
 		return alumnoRepository.filterDataDep(dato);
+	}
+	
+	@Override
+	public Collection<Alumno> filterResultadoByApoyo(String dato) throws DataAccessException {
+		return alumnoRepository.filterDataApo(dato);
+	}
+	
+	@Override
+	public Collection<Alumno> filterResultadoByCarEnf(String dato, String dato2) throws DataAccessException {
+		return alumnoRepository.filterDataBy2Filtros1(dato, dato2);
+	}
+	
+	@Override
+	public Collection<Alumno> filterResultadoByCarDep(String dato, String dato2) throws DataAccessException {
+		return alumnoRepository.filterDataBy2Filtros2(dato, dato2);
+	}
+	
+	@Override
+	public Collection<Alumno> filterResultadoByCarApo(String dato, String dato2) throws DataAccessException {
+		return alumnoRepository.filterDataBy2Filtros3(dato, dato2);
+	}
+	
+	@Override
+	public Collection<Alumno> filterResultadoByEnfDep(String dato, String dato2) throws DataAccessException {
+		return alumnoRepository.filterDataBy2Filtros4(dato, dato2);
+	}
+	
+	@Override
+	public Collection<Alumno> filterResultadoByEnfApo(String dato, String dato2) throws DataAccessException {
+		return alumnoRepository.filterDataBy2Filtros5(dato, dato2);
+	}
+	
+	@Override
+	public Collection<Alumno> filterResultadoByDepApo(String dato, String dato2) throws DataAccessException {
+		return alumnoRepository.filterDataBy2Filtros6(dato, dato2);
+	}
+	
+	
+	@Override
+	public Collection<Alumno> filterResultadoByCED(String dato, String dato2, String dato3) throws DataAccessException {
+		return alumnoRepository.filterDataBy3Filtros1(dato, dato2, dato3);
+	}
+	
+	@Override
+	public Collection<Alumno> filterResultadoByCEA(String dato, String dato2, String dato3) throws DataAccessException {
+		return alumnoRepository.filterDataBy3Filtros2(dato, dato2, dato3);
+	}
+	
+	@Override
+	public Collection<Alumno> filterResultadoByCDA(String dato, String dato2, String dato3) throws DataAccessException {
+		return alumnoRepository.filterDataBy3Filtros3(dato, dato2, dato3);
+	}
+	
+	@Override
+	public Collection<Alumno> filterResultadoByEDA(String dato, String dato2, String dato3) throws DataAccessException {
+		return alumnoRepository.filterDataBy3Filtros4(dato, dato2, dato3);
+	}
+	
+	
+	@Override
+	public Collection<Alumno> filterResultadoBy(String car, String enf, String dep, String apo) throws DataAccessException {
+		return alumnoRepository.filterData(car, enf, dep, apo);
 	}
 	
 	/* Alumnos */

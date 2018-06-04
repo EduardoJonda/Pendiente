@@ -1,12 +1,11 @@
 import * as React from 'react';
 import { IRouter, Link, browserHistory } from 'react-router';
 import { IAlumno, ITest, IRouterContext } from '../../types';
-import InputH from '../form/InputH';
 import { url, submitForm } from '../../util';
-
+import '../../../public/css/form-color.css';
 
 interface IFormularioPageProps {
-  params?: { area?: string , dato?: string};
+  params?: { carrera?: string , enfermedad?: string, deporte?: string, apoyo?: string };
 }
 
 interface IFormularioPageState {
@@ -14,7 +13,7 @@ interface IFormularioPageState {
 }
 
 
-export default class FormularioPage extends React.Component<IFormularioPageProps, IFormularioPageState> {
+export default class FormularioPageAll extends React.Component<IFormularioPageProps, IFormularioPageState> {
   context: IRouterContext;
 
   constructor(props) {
@@ -26,8 +25,8 @@ export default class FormularioPage extends React.Component<IFormularioPageProps
   componentDidMount() {
     const { params } = this.props;
 
-    if (params && params.area) {
-      const fetchUrl = url(`api/formulario/${params.area}/${params.dato}`);
+    if (params) {
+      const fetchUrl = url(`api/formulario/datos/${params.carrera}/${params.enfermedad}/${params.deporte}/${params.apoyo}`);
       fetch(fetchUrl)
         .then(response => response.json())
         .then(resultado => { console.log('resultado', resultado); this.setState({ resultado }); });
@@ -78,13 +77,7 @@ export default class FormularioPage extends React.Component<IFormularioPageProps
           <div><a onClick={browserHistory.goBack} className='btn-floating btn-small waves-effect waves-light blue'><i className='material-icons'>arrow_back</i></a></div>
           <br/>
           <div className='col s11 container'>
-          { params.area === 'carrera' ? (
-            <h2 className='center'>Alumnos de la carrera {params.dato}</h2>
-            ) : ( params.area === 'enfermedad' ? (
-            <h2 className='center'>Alumnos que tienen {params.dato}</h2>
-            ) : (
-            <h2 className='center'>Alumnos que practican {params.dato}</h2>
-          ))}
+          <h2 className='center'>Resultado</h2>
           <br/>
           <br/>
           <table className='highlight' id='tblReporte'>

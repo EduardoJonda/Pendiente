@@ -14,8 +14,8 @@ import org.springframework.samples.utec.model.Alumno;
 
 public interface AlumnoRepository extends Repository<Alumno, Integer>{
 	
-	@Query("SELECT DISTINCT alumno FROM Alumno alumno left join alumno.res_formulario resultado WHERE resultado.lugar_nacimiento LIKE :dato%")
-	Collection<Alumno> filterDataNac(@Param("dato") String dato);
+	@Query("SELECT DISTINCT alumno FROM Alumno alumno left join alumno.res_formulario resultado WHERE alumno.carrera LIKE :dato%")
+	Collection<Alumno> filterDataCar(@Param("dato") String dato);
 	
 	@Query("SELECT DISTINCT alumno FROM Alumno alumno left join alumno.res_formulario resultado WHERE resultado.enfermedad LIKE :dato%")
 	Collection<Alumno> filterDataEnf(@Param("dato") String dato);
@@ -23,6 +23,44 @@ public interface AlumnoRepository extends Repository<Alumno, Integer>{
 	@Query("SELECT DISTINCT alumno FROM Alumno alumno left join alumno.res_formulario resultado WHERE resultado.deporte LIKE :dato%")
 	Collection<Alumno> filterDataDep(@Param("dato") String dato);
 	
+	@Query("SELECT DISTINCT alumno FROM Alumno alumno left join alumno.res_formulario resultado WHERE resultado.apoyos LIKE :dato%")
+	Collection<Alumno> filterDataApo(@Param("dato") String dato);
+	
+	
+	@Query("SELECT DISTINCT alumno FROM Alumno alumno left join alumno.res_formulario resultado WHERE alumno.carrera LIKE :dato% AND resultado.enfermedad LIKE :dato2%")
+	Collection<Alumno> filterDataBy2Filtros1(@Param("dato") String dato, @Param("dato2") String dato2);
+	
+	@Query("SELECT DISTINCT alumno FROM Alumno alumno left join alumno.res_formulario resultado WHERE alumno.carrera LIKE :dato% AND resultado.deporte LIKE :dato2%")
+	Collection<Alumno> filterDataBy2Filtros2(@Param("dato") String dato, @Param("dato2") String dato2);
+	
+	@Query("SELECT DISTINCT alumno FROM Alumno alumno left join alumno.res_formulario resultado WHERE alumno.carrera LIKE :dato% AND resultado.apoyos LIKE :dato2%")
+	Collection<Alumno> filterDataBy2Filtros3(@Param("dato") String dato, @Param("dato2") String dato2);
+	
+	@Query("SELECT DISTINCT alumno FROM Alumno alumno left join alumno.res_formulario resultado WHERE resultado.enfermedad LIKE :dato% AND resultado.deporte LIKE :dato2%")
+	Collection<Alumno> filterDataBy2Filtros4(@Param("dato") String dato, @Param("dato2") String dato2);
+	
+	@Query("SELECT DISTINCT alumno FROM Alumno alumno left join alumno.res_formulario resultado WHERE resultado.enfermedad LIKE :dato% AND resultado.apoyos LIKE :dato2%")
+	Collection<Alumno> filterDataBy2Filtros5(@Param("dato") String dato, @Param("dato2") String dato2);
+	
+	@Query("SELECT DISTINCT alumno FROM Alumno alumno left join alumno.res_formulario resultado WHERE resultado.deporte LIKE :dato% AND resultado.apoyos LIKE :dato2%")
+	Collection<Alumno> filterDataBy2Filtros6(@Param("dato") String dato, @Param("dato2") String dato2);
+	
+	
+	@Query("SELECT DISTINCT alumno FROM Alumno alumno left join alumno.res_formulario resultado WHERE alumno.carrera LIKE :dato% AND resultado.enfermedad LIKE :dato2% AND resultado.deporte LIKE :dato3%")
+	Collection<Alumno> filterDataBy3Filtros1(@Param("dato") String dato, @Param("dato2") String dato2, @Param("dato3") String dato3);
+	
+	@Query("SELECT DISTINCT alumno FROM Alumno alumno left join alumno.res_formulario resultado WHERE alumno.carrera LIKE :dato% AND resultado.enfermedad LIKE :dato2% AND resultado.apoyos LIKE :dato3%")
+	Collection<Alumno> filterDataBy3Filtros2(@Param("dato") String dato, @Param("dato2") String dato2, @Param("dato3") String dato3);
+	
+	@Query("SELECT DISTINCT alumno FROM Alumno alumno left join alumno.res_formulario resultado WHERE alumno.carrera LIKE :dato% AND resultado.deporte LIKE :dato2% AND resultado.apoyos LIKE :dato3%")
+	Collection<Alumno> filterDataBy3Filtros3(@Param("dato") String dato, @Param("dato2") String dato2, @Param("dato3") String dato3);
+	
+	@Query("SELECT DISTINCT alumno FROM Alumno alumno left join alumno.res_formulario resultado WHERE resultado.enfermedad LIKE :dato% AND resultado.deporte LIKE :dato2% AND resultado.apoyos LIKE :dato3%")
+	Collection<Alumno> filterDataBy3Filtros4(@Param("dato") String dato, @Param("dato2") String dato2, @Param("dato3") String dato3);
+	
+	
+	@Query("SELECT DISTINCT alumno FROM Alumno alumno left join alumno.res_formulario resultado WHERE alumno.carrera LIKE :car% AND resultado.enfermedad LIKE :enf% AND resultado.deporte LIKE :dep% AND resultado.apoyos LIKE :apo%")
+	Collection<Alumno> filterData(@Param("car") String car, @Param("enf") String enf, @Param("dep") String dep, @Param("apo") String apo);
 	
 	@Query("SELECT DISTINCT alumno FROM Alumno alumno WHERE alumno.lastName LIKE :lastName%")
 	Collection<Alumno> findByLastName(@Param("lastName") String lastName);

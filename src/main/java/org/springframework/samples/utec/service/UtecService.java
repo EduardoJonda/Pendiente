@@ -81,16 +81,38 @@ public interface UtecService {
 
 	void deleteUser(int id);
 
+	////guardar formulario
+	void saveResForm(Res_formulario resFormulario);
+	
 
-	Collection<Alumno> filterResultadoByNacimiento(String dato) throws DataAccessException;
-
+	Collection<Alumno> filterResultadoByCarrera(String dato) throws DataAccessException;
 
 	Collection<Alumno> filterResultadoByEnfermedad(String dato) throws DataAccessException;
 
-
-	Collection<Alumno> filterResultadoByDeporte(String dato) throws DataAccessException;	
+	Collection<Alumno> filterResultadoByDeporte(String dato) throws DataAccessException;
 	
-	////guardar formulario
-	void saveResForm(Res_formulario resFormulario);
+	Collection<Alumno> filterResultadoByApoyo(String dato) throws DataAccessException;
+
+	Collection<Alumno> filterResultadoByCarEnf(String dato, String dato2) throws DataAccessException;
+
+	Collection<Alumno> filterResultadoByCarDep(String dato, String dato2) throws DataAccessException;
+
+	Collection<Alumno> filterResultadoByEnfDep(String dato, String dato2) throws DataAccessException;
+
+	Collection<Alumno> filterResultadoByCarApo(String dato, String dato2) throws DataAccessException;
+
+	Collection<Alumno> filterResultadoByEnfApo(String dato, String dato2) throws DataAccessException;
+
+	Collection<Alumno> filterResultadoByDepApo(String dato, String dato2) throws DataAccessException;
+
+	Collection<Alumno> filterResultadoByCED(String dato, String dato2, String dato3) throws DataAccessException;
+
+	Collection<Alumno> filterResultadoByCEA(String dato, String dato2, String dato3) throws DataAccessException;
+
+	Collection<Alumno> filterResultadoByCDA(String dato, String dato2, String dato3) throws DataAccessException;
+
+	Collection<Alumno> filterResultadoByEDA(String dato, String dato2, String dato3) throws DataAccessException;
+
+	Collection<Alumno> filterResultadoBy(String car, String enf, String dep, String apo) throws DataAccessException;
 
 }
